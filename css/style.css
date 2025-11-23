@@ -43,7 +43,72 @@
   .main-nav a{padding:8px 10px;border-radius:8px;color:var(--text);font-weight:600;}
   .main-nav a.active, .main-nav a:hover{background:rgba(22, 127, 248, 0.08); color:var(--text);}
   .main-nav a.active{background:transparent; color:var(--brown);}
+
+
+
+   /* BOUTON BURGER */
+   .burger {
+    width: 30px;
+    height: 22px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 999;
+   }
+   .burger  span {
+    height: 3px;
+    width: 100%;
+    background: var(--brown);
+    border-radius: 4px;
+    transition: 0.3s ease;
+   }
+   /* Animation burger */
+   .burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+   }
+   .burger.active span:nth-child(2) {
+    opacity: 0;
+   }
+   .burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+   }
+
+   /* NAV BAR MOBILE */
+   @media (max-width: 768px) {
+    .burger {
+      display: flex !important;
+    }
+    
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      width: 70%;
+      height: calc(100vh - 70px);
+      background: white;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 40px 20px;
+      gap: 20px;
+      text-align: left;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: 0.4s ease;
+    }
+    .main-nav.open {
+      right: 0;
+    }
+    .main-nav a {
+      font-size: 18px;
+      padding: 10px 0;
+      display: block !important;
+    }
+   }
+
   
+
+
+
   /* Hero */
   .hero{min-height:72vh;display:flex;align-items:center;justify-content:center;padding:70px 0 90px;}
   .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;}
@@ -161,6 +226,32 @@ footer .under-footer a {
 footer .under-footer a:hover {
   color: var(--blue);
 }
+
+/* FOOTER REPONSIVE */
+@media (max-width: 768px) {
+  footer .footer-grid {
+    text-align: center !important;
+  }
+  footer .footer-grid .col-lg-3
+  footer .footer-grid .col-lg-12 {
+    display: flex !important;
+    flex-direction: column !important;
+      align-items: center !important;
+  }
+  footer .logo img {
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  footer ul {
+    padding-left: 0 !important;
+  }
+  footer h4 {
+    text-align: center;
+  }
+  footer ul li {
+    text-align: center;
+  }
+}
   
   /* small elements */
   .icon{display:inline-block;margin-right:8px}
@@ -185,4 +276,6 @@ footer .under-footer a:hover {
   
   /* Reduced motion */
   .reduce-motion .appear{animation:none;opacity:1;transform:none}
+  
+
   

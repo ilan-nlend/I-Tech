@@ -86,6 +86,46 @@
       transform: scale(1);
     }
   }
+  /* Animation burger */
+   .burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+   }
+   .burger.active span:nth-child(2) {
+    opacity: 0;
+   }
+   .burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+   }
+   /* NAV BAR MOBILE */
+   @media (max-width: 768px) {
+    .burger {
+      display: flex !important;
+    }
+    
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      width: 70%;
+      height: calc(100vh - 70px);
+      background: white;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 40px 20px;
+      gap: 20px;
+      text-align: left;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: 0.4s ease;
+    }
+    .main-nav.open {
+      right: 0;
+    }
+    .main-nav a {
+      font-size: 18px;
+      padding: 10px 0;
+      display: block !important;
+    }
+   }
 </style>
 
 <body>
@@ -95,13 +135,19 @@
         <img src="css/images/panda_tech.jpg" alt="Logo I-Tech" class="logo-img" />
         <span class="brand-text">I-Tech</span>
       </a>
-      <nav class="main-nav">
+      <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+      </div>
+      <nav class="main-nav" id="mainNav">
         <a href="index.html">Accueil</a>
         <a href="services.html" class="active">Services</a>
         <a href="projets.html">Projets</a>
         <a href="contact.html" class="cta">Contact</a>
       </nav>
     </div>
+    
   </header>
   <section class="portfolio">
     <div class="container">
@@ -113,8 +159,10 @@
             entrepreneurs, commerces et organisations à renforcer leur visibilité en ligne grâce à des solutions
             simples, rapides et professionnelles.
 
-            Notre objectif : permettre à chacun d’avoir une vitrine digitale adaptée à son activité, tout en respectant
-            les budgets et délais. Avec <strong>I-Tech</strong>, faite passer à un cap supérieur vos activités en
+            <br>Notre objectif : <strong>"Promouvoir une solution digitale adaptée à chacun et à tout type d'activité, tout en étant efficient en terme
+            de bmoyens utilisés"</strong>.
+            
+            <br>Avec <strong>I-Tech</strong>, faite passer à un cap supérieur vos activités en
             investissez dans votre image.
 
 
@@ -194,12 +242,12 @@
         <div class="col-lg-3">
           <div class="first-item">
             <div class="logo">
-              <a href="index.html"><img src="" alt="I-Tech logo"></a>
+              <a href="index.html"><img src="css/images/" alt="I-Tech logo"></a>
             </div>
             <ul>
               <li>Douala, Cameroun</li>
               <li>Tél: +237 640 887 099</li>
-              <li><a href="mailto:contact.my.itech.cm@gmail.com" class="prime">my.itech.cm@gmail.com</a></li>
+              <li><a href="mailto:my.itech.cm@gmail.com" class="prime">my.itech.cm@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -214,7 +262,7 @@
         <div class="col-lg-3">
           <h4>Accessibilité</h4>
           <ul>
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html">Acceuil</a></li>
             <li><a href="projets.html">Projets</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -222,16 +270,16 @@
         <div class="col-lg-3">
           <h4>Aide &amp; Informations</h4>
           <ul>
-            <li><a href="">Help</a></li>
-            <li><a href="">FAQ's</a></li>
+            <li><a href="index.html">Help</a></li>
+            <li><a href="index.html">FAQ's</a></li>
           </ul>
         </div>
         <div class="col-lg-12">
           <div class="under-footer">
             <p>Copyright © 2025 I-Tech Co., Ltd. All Rights Reserved.</p>
             <ul>
-              <li><a href=""><i class="fa fa-facebook"></i></a></li>
-              <li><a href=""><i class="fa fa-tiktok"></i></a></li>
+              <li><a href="index.html"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="index.html"><i class="fa fa-tiktok"></i></a></li>
               <li><a href="https://wa.me/237640887099"><i class="fa fa-whatsapp"></i></a></li>
             </ul>
           </div>
@@ -239,8 +287,20 @@
       </div>
     </div>
   </footer>
+  
 
   <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+  <script>document.addEventListener("DOMContentLoaded", function() {
+const burger = document.getElementById('burger');
+const mainNav = document.getElementById('mainNav');
+
+if (burger && mainNav ) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mainNav.classList.toggle('open');
+    });
+  }
+});</script>
 </body>
 
 </html>

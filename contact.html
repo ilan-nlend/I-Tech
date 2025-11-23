@@ -104,6 +104,46 @@
 }
   .btn-ghost{background:transparent;color:green;border:2px solid green;box-shadow:none}
   .btn-ghost:hover{transform:translateY(-4px);background:green;color:white;border:2px solid white;box-shadow:none}
+  /* Animation burger */
+   .burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+   }
+   .burger.active span:nth-child(2) {
+    opacity: 0;
+   }
+   .burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+   }
+   /* NAV BAR MOBILE */
+   @media (max-width: 768px) {
+    .burger {
+      display: flex !important;
+    }
+    
+    .main-nav {
+      position: fixed;
+      top: 70px;
+      right: -100%;
+      width: 70%;
+      height: calc(100vh - 70px);
+      background: white;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 40px 20px;
+      gap: 20px;
+      text-align: left;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: 0.4s ease;
+    }
+    .main-nav.open {
+      right: 0;
+    }
+    .main-nav a {
+      font-size: 18px;
+      padding: 10px 0;
+      display: block !important;
+    }
+   }
 </style>
 
 <body>
@@ -113,7 +153,12 @@
         <img src="css/images/panda_tech.jpg" alt="Logo I-Tech" class="logo-img" />
         <span class="brand-text">I-Tech</span>
       </a>
-      <nav class="main-nav">
+      <div class="burger" id="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+      </div>
+      <nav class="main-nav" id="mainNav">
         <a href="index.html">Accueil</a>
         <a href="services.html">Services</a>
         <a href="projets.html">Projets</a>
@@ -127,22 +172,7 @@
     <div class="container">
       <h2 class="fade-in">Contactez-nous</h2>
       <div class="row g-4 mt-4">
-        <div class="col-md-6 fade-in" style="animation-delay: 0.1s;">
-          <div class="info-box text-center">
-            <h3 class="fade-in">Info pratiques</h3>
-            <h6>Demandez un devis ou posez vos questions — réponse rapide via Mail ou WhatsApp.</h6>
-            <i class="bi bi-whatsapp"></i>
-            <h5>WhatsApp</h5>
-            <p>+237 640 887 099</p>
-            <i class="bi bi-envelope"></i>
-            <h5>Email</h5>
-            <p><a href="mailto:contact.my.itech.cm@gmail.com">my.itech.cm@gmail.com</a></p>
-            <i class="bi bi-geo-alt"></i>
-            <h5>Adresse</h5>
-            <p>Douala, Cameroun</p>
-          </div>
-        </div>
-        <div class="col-md-6 fade-in" style="animation-delay: 0.2s;">
+        <div class="col-md-6 fade-in g-4" style="animation-delay: 0.1s;">
           <form>
             <div class="mb-3">
               <label for="name" class="form-label">Nom complet</label>
@@ -162,6 +192,21 @@
             <a href="https://wa.me/237640887099" target="_blank" class="btn btn-ghost">Contact WhatsApp</a>
           </form>
         </div>
+        <div class="col-md-6 fade-in" style="animation-delay: 0.2s;">
+          <div class="info-box text-center">
+            <h3 class="fade-in">Info pratiques</h3>
+            <h6>Demandez un devis ou posez vos questions — réponse rapide via Mail ou WhatsApp.</h6>
+            <i class="bi bi-whatsapp"></i>
+            <h5>WhatsApp</h5>
+            <p>+237 640 887 099</p>
+            <i class="bi bi-envelope"></i>
+            <h5>Email</h5>
+            <p><a href="mailto:my.itech.cm@gmail.com">my.itech.cm@gmail.com</a></p>
+            <i class="bi bi-geo-alt"></i>
+            <h5>Adresse</h5>
+            <p>Douala, Cameroun</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -177,7 +222,7 @@
             <ul>
               <li>Douala, Cameroun</li>
               <li>Tél: +237 640 887 099</li>
-              <li><a href="mailto:contact.my.itech.cm@gmail.com" class="prime">my.itech.cm@gmail.com</a></li>
+              <li><a href="mailto:my.itech.cm@gmail.com" class="prime">my.itech.cm@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -231,6 +276,17 @@
       });
     });
   </script>
+  <script>document.addEventListener("DOMContentLoaded", function() {
+const burger = document.getElementById('burger');
+const mainNav = document.getElementById('mainNav');
+
+if (burger && mainNav ) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    mainNav.classList.toggle('open');
+    });
+  }
+});</script>
 </body>
 
 </html>
